@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package warp;
+
+option java_package = "io.wilderness.warp";
+option java_outer_classname = "Zoo";
+
+// protoc --java_out=D:\Documents\workspace\practice\netty-demo\warp\src\main\java messagedata.proto
+
+message MessageZoo{
+
+  enum AnimalType {
+    DOG = 0;
+    CAT = 1;
+    CHICKEN = 2;
+    DUCK = 3;
+  }
+
+  AnimalType animal_type = 1;
+
+  oneof AnimalBody {
+    Dog dog = 2;
+    Cat cat = 3;
+    Chicken chicken = 4;
+    Duck duck = 5;
+  }
+}
+
+message Dog {
+  string name = 1;
+  int32 leg = 2;
+  string barking = 3;
+  bool swim = 4;
+}
+
+message Cat {
+  string name = 1;
+  int32 leg = 2;
+  string barking = 3;
+  bool swim = 4;
+}
+
+message Chicken {
+  string name = 1;
+  int32 wing = 2;
+  string barking = 3;
+  bool swim = 4;
+}
+
+message Duck {
+  string name = 1;
+  int32 wing = 2;
+  string barking = 3;
+  bool swim = 4;
+}
