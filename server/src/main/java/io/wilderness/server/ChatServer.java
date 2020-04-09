@@ -4,14 +4,21 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.SslProvider;
 
-public final class AnimalServer {
+import java.io.File;
+
+public final class ChatServer {
 
     static final int PORT = Integer.parseInt(System.getProperty("port", "8463"));
 
     public static void main(String[] args) throws Exception {
+
+        File certificate = new File("certificate");
+        File privateKey = new File("privateKey");
+        SslContext sslContext = SslContextBuilder.forServer(certificate, privateKey).sslProvider(SslProvider.OPENSSL).build();
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -19,7 +26,7 @@ public final class AnimalServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new AnimalServerInitializer());
+                    .childHandler(new ChatServerInitializer());
 
             b.bind(PORT).sync().channel().closeFuture().sync();
         } finally {

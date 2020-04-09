@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package warp;
+
+option java_package = "io.wilderness.warp";
+option java_outer_classname = "Chat";
+option java_multiple_files = true;
+
+message MessageChat {
+
+    enum MessageType {
+        C2SLOGINREQ = 0;
+        S2CLOGINRES = 1;
+        C2SHEARTBEATREQ = 2;
+        S2CHEARTBEATRES = 3;
+        C2SMESSAGEREQ = 4;
+        S2CMESSAGERES = 5;
+    }
+
+    MessageType message_type = 1;
+
+    oneof MessageBody {
+        C2SLoginReq loginReq = 2;
+        S2CLoginRes loginRes = 3;
+        C2SHeartbeatReq heartbeatReq = 4;
+        S2CHeartbeatRes heartbeatRes = 5;
+        C2SMessageReq messageReq = 6;
+        S2CMessageRes messageRes = 7;
+    }
+}
+
+message C2SLoginReq {
+    string name = 1;
+    string password = 2;
+}
+
+message S2CLoginRes {
+    int32 status = 1;
+}
+
+message C2SHeartbeatReq {
+}
+
+message S2CHeartbeatRes {
+}
+
+message C2SMessageReq {
+    string targetId = 1;
+    string msg = 2;
+}
+
+message S2CMessageRes {
+    string sourceId = 1;
+    string msg = 2;
+}
