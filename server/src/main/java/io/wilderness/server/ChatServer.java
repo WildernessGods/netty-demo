@@ -26,7 +26,7 @@ public final class ChatServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChatServerInitializer());
+                    .childHandler(new ChatServerInitializer(sslContext));
 
             b.bind(PORT).sync().channel().closeFuture().sync();
         } finally {

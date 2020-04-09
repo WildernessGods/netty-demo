@@ -16,13 +16,18 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<MessageChat> 
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, MessageChat messageChat) throws Exception {
-
-        if (messageChat.getMessageType() == MessageChat.MessageType.C2SLOGINREQ) {
-            ctx.fireChannelRead(messageChat.getLoginReq());
-        } else if (messageChat.getMessageType() == MessageChat.MessageType.C2SHEARTBEATREQ) {
-            ctx.fireChannelRead(messageChat.getHeartbeatReq());
-        } else if (messageChat.getMessageType() == MessageChat.MessageType.C2SMESSAGEREQ) {
-            ctx.fireChannelRead(messageChat.getMessageReq());
+        switch (messageChat.getMessageType()) {
+            case C2SLOGINREQ:
+                ctx.fireChannelRead(messageChat.getLoginReq());
+                break;
+            case C2SHEARTBEATREQ:
+                ctx.fireChannelRead(messageChat.getHeartbeatReq());
+                break;
+            case C2SMESSAGEREQ:
+                ctx.fireChannelRead(messageChat.getMessageReq());
+                break;
+            default:
+                break;
         }
     }
 }
