@@ -11,9 +11,9 @@
     </appender>
 
     <logger name="io.wilderness" level="DEBUG"/>
-<!--    <logger name="io.netty.handler.logging.LoggingHandler" level="INFO"/>-->
-<!--    <logger name="io.netty.handler.codec.protobuf.ProtobufDecoder" level="INFO"/>-->
-<!--    <logger name="io.netty.handler.codec.protobuf.ProtobufEncoder" level="INFO"/>-->
+    <!--    <logger name="io.netty.handler.logging.LoggingHandler" level="INFO"/>-->
+    <!--    <logger name="io.netty.handler.codec.protobuf.ProtobufDecoder" level="INFO"/>-->
+    <!--    <logger name="io.netty.handler.codec.protobuf.ProtobufEncoder" level="INFO"/>-->
 
     <root level="ERROR">
         <appender-ref ref="CONSOLE"/>

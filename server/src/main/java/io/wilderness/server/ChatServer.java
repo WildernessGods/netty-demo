@@ -6,9 +6,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.SslProvider;
-
-import java.io.File;
+import io.netty.handler.ssl.util.SelfSignedCertificate;
 
 public final class ChatServer {
 
@@ -16,9 +14,8 @@ public final class ChatServer {
 
     public static void main(String[] args) throws Exception {
 
-        File certificate = new File("certificate");
-        File privateKey = new File("privateKey");
-        SslContext sslContext = SslContextBuilder.forServer(certificate, privateKey).sslProvider(SslProvider.OPENSSL).build();
+        SelfSignedCertificate ssc = new SelfSignedCertificate();
+        SslContext sslContext = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
