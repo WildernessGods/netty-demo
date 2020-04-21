@@ -13,7 +13,7 @@ import io.netty.handler.ssl.SslContext;
 /**
  * Configures client pipeline to support HTTP/2 frames via {@link Http2FrameCodec} and {@link Http2MultiplexHandler}.
  */
-public final class Http2ClientFrameInitializer extends ChannelInitializer<Channel> {
+public class Http2ClientFrameInitializer extends ChannelInitializer<Channel> {
 
     private final SslContext sslCtx;
 
