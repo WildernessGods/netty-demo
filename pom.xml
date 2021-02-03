@@ -10,7 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>protobuf</module>
+        <module>protobuf-demo</module>
+        <module>grpc-demo</module>
     </modules>
 
     <properties>
