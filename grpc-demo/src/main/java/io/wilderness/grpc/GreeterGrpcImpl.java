@@ -1,9 +1,9 @@
-package io.grpc.examples.helloworld;
+package io.wilderness.grpc;
 
-import io.grpc.examples.helloworld.proto.GreeterGrpc;
-import io.grpc.examples.helloworld.proto.HelloReply;
-import io.grpc.examples.helloworld.proto.HelloRequest;
 import io.grpc.stub.StreamObserver;
+import io.wilderness.grpc.proto.GreeterGrpc;
+import io.wilderness.grpc.proto.HelloReply;
+import io.wilderness.grpc.proto.HelloRequest;
 
 /**
  * @author an_qiang
