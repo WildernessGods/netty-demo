@@ -10,13 +10,13 @@ import java.util.logging.Logger;
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
-public class HelloWorldServer {
-    private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
+public class GrpcServer {
+    private static final Logger logger = Logger.getLogger(GrpcServer.class.getName());
 
     private Server server;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final HelloWorldServer server = new HelloWorldServer();
+        final GrpcServer server = new GrpcServer();
         server.start();
         server.blockUntilShutdown();
     }
@@ -32,7 +32,7 @@ public class HelloWorldServer {
             // Use stderr here since the logger may have been reset by its JVM shutdown hook.
             System.err.println("*** shutting down gRPC server since JVM is shutting down");
             try {
-                HelloWorldServer.this.stop();
+                GrpcServer.this.stop();
             } catch (InterruptedException e) {
                 e.printStackTrace(System.err);
             }

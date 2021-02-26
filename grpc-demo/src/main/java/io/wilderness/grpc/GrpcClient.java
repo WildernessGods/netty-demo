@@ -10,12 +10,12 @@ import io.wilderness.grpc.proto.HelloRequest;
 
 import java.util.concurrent.TimeUnit;
 
-public class HelloWorldClient {
+public class GrpcClient {
 
     private final GreeterGrpc.GreeterBlockingStub blockingStub;
     private final GreeterGrpc.GreeterStub stub;
 
-    public HelloWorldClient(Channel channel) {
+    public GrpcClient(Channel channel) {
         blockingStub = GreeterGrpc.newBlockingStub(channel);
         stub = GreeterGrpc.newStub(channel);
     }
@@ -25,7 +25,7 @@ public class HelloWorldClient {
                 .usePlaintext()
                 .build();
         try {
-            HelloWorldClient client = new HelloWorldClient(channel);
+            GrpcClient client = new GrpcClient(channel);
             client.greet();
         } finally {
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);

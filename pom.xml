@@ -12,6 +12,7 @@
     <modules>
         <module>protobuf-demo</module>
         <module>grpc-demo</module>
+        <module>thrift-demo</module>
     </modules>
 
     <properties>
